@@ -4,7 +4,7 @@ from slide import Slide
 from to_slide import to_slide
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
-file_index = 0
+file_index = 2
 
 # main
 if __name__ == '__main__':
