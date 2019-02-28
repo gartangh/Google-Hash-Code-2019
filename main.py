@@ -20,6 +20,7 @@ if __name__ == '__main__':
 			photos.append(Photo(i, line[0], tags))
 
 	slides = function(photos)
+	slideshow = make_slideshow(slides)
 
 	with open('out/a_example.txt', 'w') as file_out:
 		file_out.write(f'{len(slides)}\n')
