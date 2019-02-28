@@ -2,6 +2,7 @@
 import numpy as np
 from photo import Photo
 from slide import Slide
+from algo import algo
 
 
 # main
@@ -19,8 +20,7 @@ if __name__ == '__main__':
 				tags.append(line[j+2])
 			photos.append(Photo(i, line[0], tags))
 
-	slides = []
-	# TODO create algo
+	slides = algo(photos)
 
 	with open('out/a_example.txt', 'w') as file_out:
 		file_out.write(f'{len(slides)}\n')
