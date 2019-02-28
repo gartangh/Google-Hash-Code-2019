@@ -26,6 +26,7 @@ def to_slide_greedy(photos):
         better = False
         i = 1
         while not better:
+            print(i, end="\r", flush=True)
             num_tags = calc_tags(photo, photos[i])
             if num_tags > target:
                 other = i
