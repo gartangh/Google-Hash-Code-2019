@@ -34,7 +34,7 @@ class Slide:
 		max_score = 0
 		next_slide_index = 0
 
-		while len(slides) > 0:
+		while len(slides) > 1:
 			for i1, s1 in enumerate(slides):
 				score = Slide.get_score(slide0, s1)
 				if score > max_score:
@@ -44,4 +44,6 @@ class Slide:
 			slideshow.append(slides.pop(next_slide_index))
 			slide0 = slideshow[-1]
 
+		slideshow.append(slides.pop(0))
+		
 		return slideshow
