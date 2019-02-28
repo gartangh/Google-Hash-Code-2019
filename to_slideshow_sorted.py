@@ -43,13 +43,6 @@ def bucketSort(slides):
         for j in range(len(arr[i])): 
             x.append(arr[i][j])
             #k += 1
-    n=50
-
-    y=[Slide.make_slideshow(x[i:i+n]) for i in range(0,len(x),n)]
-    slideshow = []
-    for i in range(n):
-        for j in range(len(y[i])):
-            slideshow.append(y[i][j])
 
     slideshow = x
     return slideshow
