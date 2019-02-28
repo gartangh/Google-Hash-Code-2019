@@ -19,9 +19,20 @@ def to_slide_greedy(photos):
     photos = bucketSort(photos)
 
     while len(photos)>1:
-        slides.append(Slide(photos[0], photos[len(photos)-1]))
+        photo = photos[len(photos)-1]
         photos.pop(len(photos)-1)
-        photos.pop(0)
+        
+        max_tags = len(photo.tags)
+        other = 0
+
+        for i in range(1, min(len(photos), 1000)):
+            num_tags = calc_tags(photo, photos[i])
+            if num_tags > max_tags:
+                max_tags = num_tags
+                other = i
+
+        slides.append(Slide(photo, photos[other]))
+        photos.pop(other)
 
     return slides
 
@@ -64,3 +75,9 @@ def bucketSort(photos):
             x.append(arr[i][j])
             k += 1
     return x 
+
+
+
+def calc_tags(photo1, photo2):
+    combined_tags = list(set().union(photo1.tags, photo2.tags))
+    return len(combined_tags)
