@@ -15,37 +15,15 @@ def to_slide_greedy(photos):
     # only vertical should remain
     slides, photos = get_horizontal(slides, photos)
 
-    # find matches for vertical pictures
-    print("Matching vertical pictures to slides...")
+    # sort photos by number of tags
+    photos = bucketSort(photos)
+
     while len(photos)>1:
-        print(len(photos), end="\r", flush=True)
-        # look for an "ok" combination of pictures
-        photo = photos[0]
-        other = 0
+        slides.append(Slide(photos[0], photos[len(photos)-1]))
+        photos.pop(len(photos)-1)
+        photos.pop(0)
 
-        better = False
-        i = 1
-        while not better:
-            print(i, end="\r", flush=True)
-            num_tags = calc_tags(photo, photos[i])
-            if num_tags > target:
-                other = i
-                better = True
-            i+=1
-
-        if other is not 0:
-            # if 0 not usefull
-            slides.append(Slide(photo,photos[other]))
-            photos.pop(other)
-            photos.pop(0) 
-
-    # print number of unused pictures
-    print(len(photos))
     return slides
-
-def calc_tags(photo1, photo2):
-    combined_tags = list(set().union(photo1.tags, photo2.tags))
-    return len(combined_tags)
 
 def get_horizontal(slides, photos):
     i = 0
@@ -60,3 +38,29 @@ def get_horizontal(slides, photos):
         i+=1
     
     return slides, photos
+
+def bucketSort(photos): 
+    arr = [] 
+
+    # find max amount of tags
+    slot_num = 0
+    for s in photos:
+    	n_tags = len(s.tags)
+    	if slot_num < n_tags:
+    		slot_num = n_tags
+    
+    for i in range(slot_num): 
+        arr.append([]) 
+          
+    # Put array elements in different buckets  
+    for s in photos:
+        arr[len(s.tags)-1].append(s) 
+    
+    x = []
+    # concatenate the result 
+    k = 0
+    for i in range(slot_num): 
+        for j in range(len(arr[i])): 
+            x.append(arr[i][j])
+            k += 1
+    return x 
