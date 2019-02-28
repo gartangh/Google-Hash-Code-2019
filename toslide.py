@@ -28,10 +28,8 @@ def verticalslide(photos):
                 max_tags = num_tags
                 other = i
 
-        if other is 0:
-            # last picture or no in common
-            # => not usefull to add
-        else:
+        if other is not 0:
+            # if 0 not usefull
             slides.append(Slide(photo,photos[other]))
             photos.pop(0)
             photos.pop(other)   
