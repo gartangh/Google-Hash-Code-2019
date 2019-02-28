@@ -1,6 +1,6 @@
 # imports
 from photo import Photo
-from slide import Slide, make_slideshow
+from slide import Slide
 from toslide import toSlide
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
@@ -23,7 +23,7 @@ if __name__ == '__main__':
 			photos.append(Photo(i, line[0], tags))
 
 	slides = toSlide(photos)
-	slideshow = make_slideshow(slides)
+	slideshow = Slide.make_slideshow(slides)
 
 	with open('out/{}.txt'.format(file_names[file_index]), 'w') as file_out:
 		file_out.write(f'{len(slides)}\n')
