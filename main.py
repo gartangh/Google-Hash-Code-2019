@@ -1,5 +1,4 @@
 # imports
-import numpy as np
 from photo import Photo
 from slide import Slide, make_slideshow
 from toslide import toSlide

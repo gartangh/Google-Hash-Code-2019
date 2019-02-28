@@ -1,5 +1,3 @@
-from photo import Photo
-
 class Slide:
 	"""A slide"""
 
@@ -20,9 +18,6 @@ class Slide:
 		else:
 			return f'{self.photo1.id} {self.photo2.id}\n'
 
-	def get_tags(self):
-		return self.tags
-
 	@staticmethod
 	def get_score(slide1, slide2):
 		score1 = len(slide1.tags & slide2.tags)
@@ -30,22 +25,23 @@ class Slide:
 		score3 = len(slide2.tags) - len(slide1.tags & slide2.tags)
 		return min(score1, score2, score3)
 
-def make_slideshow(slides):
-	slideshow = []
-	slide0 = slides.pop()
-	slideshow.append(slide0)
+	@staticmethod
+	def make_slideshow(slides):
+		slideshow = []
+		slide0 = slides.pop()
+		slideshow.append(slide0)
 
-	max_score = 0
-	nest_slide_index = 0
+		max_score = 0
+		next_slide_index = 0
 
-	while not slides.empty():
-		for i1,s1 in ennumerate(slides):
-			score = getScore(slide0, s1)
-			if score > max_score:
-				max_score = score
-				nest_slide_index = i1
+		while not slides.empty():
+			for i1, s1 in enumerate(slides):
+				score = Slide.get_score(slide0, s1)
+				if score > max_score:
+					max_score = score
+					next_slide_index = i1
 
-		slideshow.append(slides.pop(i1))
-		slide0 = slideshow[-1]
+			slideshow.append(slides.pop(next_slide_index))
+			slide0 = slideshow[-1]
 
-	return slideshow
+		return slideshow
