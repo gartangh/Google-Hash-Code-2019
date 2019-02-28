@@ -2,6 +2,7 @@
 import numpy as np
 from photo import Photo
 from slide import Slide
+from toslide import verticalslide
 
 
 # main
@@ -19,7 +20,7 @@ if __name__ == '__main__':
 				tags.append(line[j+2])
 			photos.append(Photo(i, line[0], tags))
 
-	slides = function(photos)
+	slides = verticalslide(photos)
 	slideshow = make_slideshow(slides)
 
 	with open('out/a_example.txt', 'w') as file_out:
