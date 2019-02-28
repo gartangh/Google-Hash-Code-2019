@@ -29,3 +29,23 @@ class Slide:
 		score2 = len(slide1.tags) - len(slide1.tags & slide2.tags)
 		score3 = len(slide2.tags) - len(slide1.tags & slide2.tags)
 		return min(score1, score2, score3)
+
+def make_slideshow(slides):
+	slideshow = []
+	slide0 = slides.pop()
+	slideshow.append(slide0)
+
+	max_score = 0
+	nest_slide_index = 0
+
+	while not slides.empty():
+		for i1,s1 in ennumerate(slides):
+			score = getScore(slide0, s1)
+			if score > max_score:
+				max_score = score
+				nest_slide_index = i1
+
+		slideshow.append(slides.pop(i1))
+		slide0 = slideshow[-1]
+
+	return slideshow
