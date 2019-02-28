@@ -1,8 +1,10 @@
+from slide import Slide
+
 def make_slideshow_sorted(slides):
 
-		slideshow = bucketSort(slides)
+        slideshow = bucketSort(slides)
 
-		return slideshow
+        return slideshow
 
 # sort slides on amount of tags
 def qsort(inlist):
@@ -20,9 +22,9 @@ def bucketSort(slides):
     # find max amount of tags
     slot_num = 0
     for s in slides:
-    	n_tags = len(s.tags)
-    	if slot_num < n_tags:
-    		slot_num = n_tags
+        n_tags = len(s.tags)
+        if slot_num < n_tags:
+            slot_num = n_tags
     
     for i in range(slot_num): 
         arr.append([]) 
@@ -30,12 +32,29 @@ def bucketSort(slides):
     # Put array elements in different buckets  
     for s in slides:
         arr[len(s.tags)-1].append(s) 
-    
+
     x = []
     # concatenate the result 
-    k = 0
+    #k = 0
     for i in range(slot_num): 
+#        if len(arr[i]) > 1:
+#            arr[i] = Slide.make_slideshow(arr[i])
+
         for j in range(len(arr[i])): 
             x.append(arr[i][j])
-            k += 1
-    return x 
+            #k += 1
+    n=50
+
+    y=[Slide.make_slideshow(x[i:i+n]) for i in range(0,len(x),n)]
+    slideshow = []
+    for i in range(n):
+        for j in range(len(y[i])):
+            slideshow.append(y[i][j])
+
+    slideshow = x
+    return slideshow
+
+
+
+
+
