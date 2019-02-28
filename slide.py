@@ -20,9 +20,11 @@ class Slide:
 		else:
 			return f'{self.photo1.id} {self.photo2.id}\n'
 
+	def get_tags(self):
+		return self.tags
 
 	@staticmethod
-	def getScore(slide1, slide2):
+	def get_score(slide1, slide2):
 		score1 = len(slide1.tags & slide2.tags)
 		score2 = len(slide1.tags) - len(slide1.tags & slide2.tags)
 		score3 = len(slide2.tags) - len(slide1.tags & slide2.tags)
