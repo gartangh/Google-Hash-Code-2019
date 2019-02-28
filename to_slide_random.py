@@ -1,7 +1,8 @@
 from slide import Slide
+from numpy import random
 
 
-def to_slide(photos):
+def to_slide_random(photos):
     # array containing slides
     slides = []
 
@@ -19,29 +20,17 @@ def to_slide(photos):
 
     # find matches for vertical pictures
     print("Matching vertical pictures to slides...")
-    while len(photos) > 1:
+    while len(photos)>2:
         print(len(photos), end="\r", flush=True)
-        # look for an "ok" combination of pictures
+        # look for a random combination of pictures
         photo = photos[0]
-        max_tags = len(photo.tags)
-        other = 0
-
-        for i in range(1, len(photos)):
-            num_tags = calc_tags(photo, photos[i])
-            if num_tags > max_tags:
-                max_tags = num_tags
-                other = i
+        other = random.randint(1, len(photos)-1)
 
         if other is not 0:
-            # if 0 not useful
-            slides.append(Slide(photo, photos[other]))
+            # if 0 not usefull
+            slides.append(Slide(photo,photos[other]))
             photos.pop(other)
             photos.pop(0)  
     # print number of unused pictures
     print(len(photos))
     return slides
-
-
-def calc_tags(photo1, photo2):
-    combined_tags = list(set().union(photo1.tags, photo2.tags))
-    return len(combined_tags)
