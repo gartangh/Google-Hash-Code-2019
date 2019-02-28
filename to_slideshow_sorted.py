@@ -37,8 +37,8 @@ def bucketSort(slides):
     # concatenate the result 
     #k = 0
     for i in range(slot_num): 
-#        if len(arr[i]) > 1:
-#            arr[i] = Slide.make_slideshow(arr[i])
+        if len(arr[i]) > 1:
+            arr[i] = Slide.make_slideshow(arr[i])
 
         for j in range(len(arr[i])): 
             x.append(arr[i][j])
