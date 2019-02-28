@@ -7,7 +7,6 @@ def to_slide_greedy(photos):
     number_tags = 0
     for photo in photos:
         number_tags += len(photo.tags)
-    target = number_tags/number_pics
 
     # array containing slides
     slides = []
@@ -23,13 +22,14 @@ def to_slide_greedy(photos):
         photos.pop(len(photos)-1)
         
         max_tags = len(photo.tags)
-        other = 0
+        other = len(photos)-2
 
-        for i in range(1, min(len(photos), 1000)):
-            num_tags = calc_tags(photo, photos[i])
-            if num_tags > max_tags:
-                max_tags = num_tags
-                other = i
+        for i in range(len(photos)-100, len(photos)-1):
+            if i>=0:
+                num_tags = calc_tags(photo, photos[i])
+                if num_tags > max_tags:
+                    max_tags = num_tags
+                    other = i
 
         slides.append(Slide(photo, photos[other]))
         photos.pop(other)
