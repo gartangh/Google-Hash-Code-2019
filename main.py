@@ -4,6 +4,8 @@ from slide import Slide
 from to_slide import to_slide
 from to_slide_random import to_slide_random
 from to_slideshow_sorted import make_slideshow_sorted
+from to_slide_greedy import to_slide_greedy
+
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
 file_index = 0
@@ -12,22 +14,21 @@ file_index = 0
 if __name__ == '__main__':
 	photos = []
 
-
 	print('Reading Photos ...')
 	with open('in/{}.txt'.format(file_names[file_index])) as file_in:
-		N = int(file_in.readline().split()[0])
-
-		for i in range(N):
+		for i in range(int(file_in.readline().split()[0])):
 			line = file_in.readline().split()
-			tags = []
-			for j in range(int(line[1])):
-				tags.append(line[j+2])
+			tags = line[-int(line[1]):]
 			photos.append(Photo(i, line[0], tags))
-
 	print('Photos read')
 
+	all_tags = []
+	for photo in photos:
+		all_tags.extend(photo.tags)
+	print(len(all_tags), len(set(all_tags)))
+
 	print('to_slide ...')
-	slides = to_slide_random(photos)
+	slides = to_slide_greedy(photos)
 	print('to_slide')
 
 	print('Making slideshow ...')
