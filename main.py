@@ -1,16 +1,19 @@
 # imports
 import numpy as np
 from photo import Photo
-from slide import Slide
-from toslide import verticalslide
+from slide import Slide, make_slideshow
+from toslide import toSlide
 
+file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
+file_index = 3
 
 # main
 if __name__ == '__main__':
 
 	photos = []
 
-	with open('in/a_example.txt') as file_in:
+
+	with open('in/{}.txt'.format(file_names[file_index])) as file_in:
 		N = int(file_in.readline().split()[0])
 
 		for i in range(N):
@@ -20,11 +23,10 @@ if __name__ == '__main__':
 				tags.append(line[j+2])
 			photos.append(Photo(i, line[0], tags))
 
-	slides = verticalslide(photos)
-	
+	slides = toSlide(photos)
 	slideshow = make_slideshow(slides)
 
-	with open('out/a_example.txt', 'w') as file_out:
+	with open('out/{}.txt'.format(file_names[file_index]), 'w') as file_out:
 		file_out.write(f'{len(slides)}\n')
-		for slide in slides:
+		for slide in slideshow:
 			file_out.write(str(slide))
