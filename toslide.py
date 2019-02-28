@@ -1,6 +1,6 @@
 from slide import Slide
 
-def verticalslide(photos):
+def toSlide(photos):
     # array containing slides
     slides = []
 
