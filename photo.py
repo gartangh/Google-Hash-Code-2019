@@ -1,8 +1,8 @@
 class Photo:
-	"""A picture"""
+	"""A photo"""
 
 	def __init__(self, id, orientation, tags):
-        self.id = id
+		self.id = id
 		self.orientation = orientation
 		self.tags = tags
 
