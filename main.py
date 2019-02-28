@@ -24,6 +24,11 @@ if __name__ == '__main__':
 
 	print('Photos read')
 
+	all_tags = []
+	for photo in photos:
+		all_tags.extend(photo.tags)
+	print(len(all_tags), len(set(all_tags)))
+
 	print('to_slide ...')
 	slides = to_slide(photos)
 	print('to_slide')

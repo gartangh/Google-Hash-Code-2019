@@ -6,7 +6,7 @@ def to_slide(photos):
     slides = []
 
     # go through all horizontal pictures
-    i = 2
+    i = 0
     print("Sorting horizontal pictures...")
     while i < len(photos):
         if photos[i].orientation is 'H':
