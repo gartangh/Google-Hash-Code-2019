@@ -2,6 +2,7 @@
 from photo import Photo
 from slide import Slide
 from to_slide import to_slide
+from to_slide_random import to_slide_random
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
 file_index = 2
@@ -30,7 +31,7 @@ if __name__ == '__main__':
 	print(len(all_tags), len(set(all_tags)))
 
 	print('to_slide ...')
-	slides = to_slide(photos)
+	slides = to_slide_random(photos)
 	print('to_slide')
 
 	print('Making slideshow ...')
