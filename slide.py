@@ -20,9 +20,9 @@ class Slide:
 
 	@staticmethod
 	def get_score(slide1, slide2):
-		score1 = len(slide1.tags & slide2.tags)
-		score2 = len(slide1.tags) - len(slide1.tags & slide2.tags)
-		score3 = len(slide2.tags) - len(slide1.tags & slide2.tags)
+		score1 = len(set(slide1.tags) & set(slide2.tags))
+		score2 = len(set(slide1.tags)) - len(set(slide1.tags) & set(slide2.tags))
+		score3 = len(set(slide2.tags)) - len(set(slide1.tags) & set(slide2.tags))
 		return min(score1, score2, score3)
 
 	@staticmethod
