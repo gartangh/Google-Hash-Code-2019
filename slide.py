@@ -20,9 +20,9 @@ class Slide:
 
 	@staticmethod
 	def get_score(slide1, slide2):
-		score1 = len(slide1.tags & slide2.tags)
-		score2 = len(slide1.tags) - len(slide1.tags & slide2.tags)
-		score3 = len(slide2.tags) - len(slide1.tags & slide2.tags)
+		score1 = len(set(slide1.tags) & set(slide2.tags))
+		score2 = len(set(slide1.tags)) - len(set(slide1.tags) & set(slide2.tags))
+		score3 = len(set(slide2.tags)) - len(set(slide1.tags) & set(slide2.tags))
 		return min(score1, score2, score3)
 
 	@staticmethod
@@ -34,7 +34,7 @@ class Slide:
 		max_score = 0
 		next_slide_index = 0
 
-		while len(slides) > 0:
+		while len(slides) > 1:
 			for i1, s1 in enumerate(slides):
 				score = Slide.get_score(slide0, s1)
 				if score > max_score:
@@ -44,4 +44,6 @@ class Slide:
 			slideshow.append(slides.pop(next_slide_index))
 			slide0 = slideshow[-1]
 
+		slideshow.append(slides.pop(0))
+		
 		return slideshow
