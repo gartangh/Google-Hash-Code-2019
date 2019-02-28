@@ -12,18 +12,19 @@ class Slide:
 
 		if photo2 is not None:
 			self.tags.extend(photo2.tags)
+			self.tags = list(set(self.tags))
 
 	def __str__(self):
 		if self.photo2 is None:
 			return f'{self.photo1.id}\n'
 		else:
 			return f'{self.photo1.id} {self.photo2.id}\n'
-			
-	def getTags(self):
+
+	def get_tags(self):
 		return self.tags
 
 	@staticmethod
-	def getScore(slide1, slide2):
+	def get_score(slide1, slide2):
 		score1 = len(slide1.tags & slide2.tags)
 		score2 = len(slide1.tags) - len(slide1.tags & slide2.tags)
 		score3 = len(slide2.tags) - len(slide1.tags & slide2.tags)

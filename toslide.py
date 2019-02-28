@@ -31,8 +31,8 @@ def verticalslide(photos):
         if other is not 0:
             # if 0 not usefull
             slides.append(Slide(photo,photos[other]))
-            photos.pop(0)
-            photos.pop(other)   
+            photos.pop(other)
+            photos.pop(0)  
 
     return slides
 
