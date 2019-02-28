@@ -5,7 +5,7 @@ from to_slide import to_slide
 from to_slide_random import to_slide_random
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
-file_index = 2
+file_index = 4
 
 # main
 if __name__ == '__main__':
