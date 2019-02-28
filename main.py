@@ -3,9 +3,10 @@ from photo import Photo
 from slide import Slide
 from to_slide import to_slide
 from to_slide_random import to_slide_random
+from to_slideshow_sorted import make_slideshow_sorted
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
-file_index = 2
+file_index = 0
 
 # main
 if __name__ == '__main__':
@@ -30,7 +31,8 @@ if __name__ == '__main__':
 	print('to_slide')
 
 	print('Making slideshow ...')
-	slideshow = Slide.make_slideshow(slides)
+	#slideshow = Slide.make_slideshow(slides)
+	slideshow = make_slideshow_sorted(slides)
 	print('Slideshow made')
 
 	print('Writing output ...')
