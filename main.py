@@ -10,8 +10,8 @@ file_index = 2
 if __name__ == '__main__':
 	photos = []
 
-	print('Reading Photos ...')
 
+	print('Reading Photos ...')
 	with open('in/{}.txt'.format(file_names[file_index])) as file_in:
 		N = int(file_in.readline().split()[0])
 

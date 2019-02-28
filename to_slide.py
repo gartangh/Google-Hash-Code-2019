@@ -6,7 +6,7 @@ def to_slide(photos):
     slides = []
 
     # go through all horizontal pictures
-    i = 0
+    i = 2
     print("Sorting horizontal pictures...")
     while i < len(photos):
         if photos[i].orientation is 'H':
@@ -19,7 +19,7 @@ def to_slide(photos):
 
     # find matches for vertical pictures
     print("Matching vertical pictures to slides...")
-    while photos:
+    while len(photos)>1:
         print(len(photos), end="", flush=True)
         # look for an "ok" combination of pictures
         photo = photos[0]
