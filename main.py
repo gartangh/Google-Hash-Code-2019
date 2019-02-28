@@ -8,7 +8,6 @@ from to_slide_greedy import to_slide_greedy
 
 
 file_names = ['a_example', 'b_lovely_landscapes', 'c_memorable_moments', 'd_pet_pictures', 'e_shiny_selfies']
-
 file_index = 2
 
 
