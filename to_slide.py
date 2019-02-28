@@ -1,11 +1,13 @@
 from slide import Slide
 
-def toSlide(photos):
+
+def to_slide(photos):
     # array containing slides
     slides = []
 
     # go through all horizontal pictures
     i = 0
+    print("Sorting horizontal pictures...")
     while i < len(photos):
         if photos[i].orientation is 'H':
             # horizontal pictures are the same as a slide
@@ -16,7 +18,9 @@ def toSlide(photos):
         i+=1
 
     # find matches for vertical pictures
+    print("Matching vertical pictures to slides...")
     while photos:
+        print(len(photos), end="", flush=True)
         # look for an "ok" combination of pictures
         photo = photos[0]
         max_tags = len(photo.tags)
