@@ -7,4 +7,4 @@ class Photo:
 		self.tags = tags
 
 	def __str__(self):
-		return f'{self.orientation} {self.tags}\n'
+		return f'{self.id} {self.orientation} {self.tags}\n'
