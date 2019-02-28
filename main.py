@@ -1,6 +1,7 @@
 # imports
 import numpy as np
 from photo import Photo
+from slide import Slide
 
 
 # main
@@ -22,6 +23,6 @@ if __name__ == '__main__':
 	# TODO create algo
 
 	with open('out/a_example.txt', 'w') as file_out:
-		file_out.write(f'{len()}\n')
+		file_out.write(f'{len(slides)}\n')
 		for slide in slides:
 			file_out.write(str(slide))
