@@ -37,7 +37,8 @@ def to_slide(photos):
             slides.append(Slide(photo,photos[other]))
             photos.pop(other)
             photos.pop(0)  
-
+    # print number of unused pictures
+    print(len(photos))
     return slides
 
 def calc_tags(photo1, photo2):
