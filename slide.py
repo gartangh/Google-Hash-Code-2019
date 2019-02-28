@@ -33,7 +33,7 @@ class Slide:
 		slide0 = slides.pop()
 		slideshow.append(slide0)
 
-		while len(slides) > 1:
+		while len(slides) > 2:
 			max_score = 0
 			next_slide_index = 0
 

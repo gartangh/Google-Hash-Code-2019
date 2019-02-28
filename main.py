@@ -12,18 +12,12 @@ file_index = 2
 if __name__ == '__main__':
 	photos = []
 
-
 	print('Reading Photos ...')
 	with open('in/{}.txt'.format(file_names[file_index])) as file_in:
-		N = int(file_in.readline().split()[0])
-
-		for i in range(N):
+		for i in range(int(file_in.readline().split()[0])):
 			line = file_in.readline().split()
-			tags = []
-			for j in range(int(line[1])):
-				tags.append(line[j+2])
+			tags = line[-int(line[1]):]
 			photos.append(Photo(i, line[0], tags))
-
 	print('Photos read')
 
 	all_tags = []
